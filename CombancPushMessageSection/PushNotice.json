@@ -1,0 +1,21 @@
+{
+    "data": [{
+        "name": "标题",
+        "key" : "title",
+        "type": "3",
+    },
+    {
+        "name": "内容",
+        "key" : "content",
+        "type": "4",
+    },
+    {
+        "name": "上传图片",
+        "key" : "image",
+        "type": "5",
+    },
+    ],
+    "code": "200",
+    "msg": "操作成功"
+}
+
