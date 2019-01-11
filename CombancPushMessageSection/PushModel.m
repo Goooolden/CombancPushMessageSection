@@ -17,21 +17,21 @@
 
 @end
 
-@implementation NewslistModel
+@implementation NewsListModel
 
 + (NSDictionary *)mj_objectClassInArray {
-    return @{@"files":@"NoticeFileImgsModel",
-             @"imgs":@"NoticeFileImgsModel"
+    return @{@"files":@"NoticeFileImgModel",
+             @"imgs":@"NoticeFileImgModel"
              };
 }
 
 @end
 
-@implementation NoticelistModel
+@implementation NoticeListModel
 
 + (NSDictionary *)mj_objectClassInArray {
-    return @{@"files":@"NoticeFileImgsModel",
-             @"imgs":@"NoticeFileImgsModel",
+    return @{@"files":@"NoticeFileImgModel",
+             @"imgs":@"NoticeFileImgModel",
              @"users":@"MessageUsersModel"
              };
 }
@@ -42,7 +42,7 @@
 
 @end
 
-@implementation NoticeFileImgsModel
+@implementation NoticeFileImgModel
 
 @end
 

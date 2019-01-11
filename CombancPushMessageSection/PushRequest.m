@@ -11,13 +11,14 @@
 #import "NewsPushDefine.h"
 #import "MJExtension.h"
 #import "PushModel.h"
+#import "CombancHUD.h"
 
 @implementation PushRequest
 #pragma mark - 获取新闻，公告，通知列表及详情
 + (void)requestNewsList:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:GetNewslist_URL headers:header(MyToken) params:param success:^(id json) {
         if ([[PushRequest new] isRequestSuccess:json]) {
-            NSArray *dataArray = [NoticelistModel mj_objectArrayWithKeyValuesArray:json[@"data"][@"list"]];
+            NSArray *dataArray = [NoticeListModel mj_objectArrayWithKeyValuesArray:json[@"data"][@"list"]];
             success(dataArray);
         }
     } failure:^(NSError *error) {
@@ -28,7 +29,7 @@
 + (void)requestNoticeList:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:GetNoticelist_URL headers:header(MyToken) params:param success:^(id json) {
         if([[PushRequest new] isRequestSuccess:json]) {
-            NSArray *dataArray = [NoticelistModel mj_objectArrayWithKeyValuesArray:json[@"data"][@"list"]];
+            NSArray *dataArray = [NoticeListModel mj_objectArrayWithKeyValuesArray:json[@"data"][@"list"]];
             success(dataArray);
         }
     } failure:^(NSError *error) {
@@ -39,7 +40,7 @@
 + (void)requestPublicNoticeList:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:GetMessageList_URL headers:header(MyToken) params:param success:^(id json) {
         if([[PushRequest new] isRequestSuccess:json]) {
-            NSArray *dataArray = [NoticelistModel mj_objectArrayWithKeyValuesArray:json[@"data"][@"list"]];
+            NSArray *dataArray = [NoticeListModel mj_objectArrayWithKeyValuesArray:json[@"data"][@"list"]];
             success(dataArray);
         }
     } failure:^(NSError *error) {
@@ -95,105 +96,131 @@
 #pragma mark - 新闻，公告，通知操作
 + (void)requestNewsAdd:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:AddNews_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestNewsChange:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:UpdateNews_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestNewsDel:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:DelNews_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestNewsPush:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:PublishNews_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestNoticeAdd:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:AddNotice_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestNoticeChange:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:UpdateNotice_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestNoticeDel:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:DelNotice_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestNoticePush:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:PublishNotice_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestMessageAdd:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:AddMessage_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestMessageChange:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:UpdateMessage_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestMessageCancel:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:CancelMessage_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestMessagePush:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:PublishMessage_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
 + (void)requestMessagesendDel:(NSDictionary *)param success:(RequestSucess)success failed:(RequestFailed)failed {
     [HTTPTool postWithURL:DelMessage_URL headers:header(MyToken) params:param success:^(id json) {
-        
+        if ([[PushRequest new] isRequestSuccess:json]) {
+            success(json);
+        }
     } failure:^(NSError *error) {
-        
+        failed(error);
     }];
 }
 
@@ -207,25 +234,30 @@
         }
         case 0:{
             //没有查询到数据
+            [CombancHUD showErrorMessage:@"未查询到数据"];
             return NO;
             break;
         }
         case -1:{
             //操作过程中出现异常
+            [CombancHUD showErrorMessage:@"操作异常"];
             return NO;
             break;
         }
         case -2:{
             //数据重复，一般在新增接口中
+            [CombancHUD showErrorMessage:@"数据重复"];
             return NO;
             break;
         }
         case -100:{
             //用户会话过期，需重新登陆
+            [CombancHUD showErrorMessage:@"会话过期，请重新登陆"];
             return NO;
             break;
         }
         default:{
+            [CombancHUD showErrorMessage:@"操作失败"];
             return NO;
             break;
         }

@@ -107,7 +107,7 @@ static NSString *const CELLID = @"CELLID";
 }
 
 - (void)configCell:(NewsManagerTableViewCell *)cell indexPath:(NSIndexPath *)indexPath {
-    NoticelistModel *model = self.dataArray[indexPath.row];
+    NoticeListModel *model = self.dataArray[indexPath.row];
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     if (self.manager.pushType == PushNewType || self.manager.pushType == PushNoticeType) {
         formatter.dateFormat = @"yyyy/MM/dd";

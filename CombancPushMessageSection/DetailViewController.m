@@ -16,6 +16,7 @@
 #import "MJExtension.h"
 #import "PushModel.h"
 #import "Masonry.h"
+#import "CombancHUD.h"
 
 @interface DetailViewController ()<UIWebViewDelegate>
 
@@ -91,13 +92,13 @@
     NSString *onload = @"this.onclick = function() {"
     "  window.location.href = 'combanc:src=' +this.src;"
     "};";
-    for (NoticeFileImgsModel *model in self.model.imgs) {
+    for (NoticeFileImgModel *model in self.model.imgs) {
         NSString *imagePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
         NSString *imageStr = [NSString stringWithFormat:@"<img src=\"%@\" onload=\"%@\" style= height=\"250px\"; width=\"100%%\"", imagePath,onload];
         [body appendFormat:@"<div class=\"imageList\"><br>%@</div>",imageStr];
     }
     //添加附件
-    for (NoticeFileImgsModel *model in self.model.files) {
+    for (NoticeFileImgModel *model in self.model.files) {
         NSString *filePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
         [body appendFormat:@"<a href= %@> %@ </a> <br />",filePath,model.name];
     }
@@ -116,15 +117,15 @@
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"置顶" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if (self.manager.pushType == PushNewType) {
             [PushRequest requestNewsPush:publishNewsParam(@[self.model.id], topState) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushNoticeType) {
             [PushRequest requestNoticePush:publishNoticeParam(@[self.model.id], topState) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushMessageType) {
             
@@ -133,15 +134,15 @@
     UIAlertAction *action2 = [UIAlertAction actionWithTitle:@"取消置顶" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if (self.manager.pushType == PushNewType) {
             [PushRequest requestNewsPush:publishNewsParam(@[self.model.id], pushState) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushNoticeType) {
             [PushRequest requestNoticePush:publishNoticeParam(@[self.model.id], pushState) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushMessageType) {
             
@@ -150,63 +151,63 @@
     UIAlertAction *action3 = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if (self.manager.pushType == PushNewType) {
             [PushRequest requestNewsDel:delNewsParam(@[self.model.id]) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushNoticeType) {
             [PushRequest requestNoticeDel:delNoticeParam(@[self.model.id]) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushMessageType) {
             [PushRequest requestMessagesendDel:delMessageParameter(@[self.model.id]) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }
     }];
     UIAlertAction *action4 = [UIAlertAction actionWithTitle:@"发布" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if (self.manager.pushType == PushNewType) {
             [PushRequest requestNewsPush:publishNewsParam(@[self.model.id], pushState) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushNoticeType) {
             [PushRequest requestNoticePush:publishNoticeParam(@[self.model.id], pushState) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushMessageType) {
             [PushRequest requestMessagePush:publishMessageParameter(self.model.id) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }
     }];
     UIAlertAction *action5 = [UIAlertAction actionWithTitle:@"取消发布" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         if (self.manager.pushType == PushNewType) {
             [PushRequest requestNewsPush:publishNewsParam(@[self.model.id], cancelState) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushNoticeType) {
             [PushRequest requestNoticePush:publishNoticeParam(@[self.model.id], cancelState) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }else if (self.manager.pushType == PushMessageType) {
             [PushRequest requestMessageCancel:cancelMessageParameter(self.model.id) success:^(id json) {
-                
+                [CombancHUD showSuccessMessage:@"操作成功"];
             } failed:^(NSError *error) {
-                
+                [CombancHUD showErrorMessage:@"操作失败"];
             }];
         }
     }];
@@ -220,7 +221,7 @@
             pushVC.typeName    = self.model.typeStr;
             pushVC.typeID      = self.model.type;
             pushVC.content     = self.model.content;
-            for (NoticeFileImgsModel *model in self.model.imgs) {
+            for (NoticeFileImgModel *model in self.model.imgs) {
                 NSString *imagePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
                 [imageDic setObject:model.fileId forKey:imagePath];
             }
@@ -232,7 +233,7 @@
             pushVC.notieID       = self.model.id;
             pushVC.titleString   = self.model.title;
             pushVC.contentString = self.model.content;
-            for (NoticeFileImgsModel *model in self.model.imgs) {
+            for (NoticeFileImgModel *model in self.model.imgs) {
                 NSString *imagePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
                 [imageDic setObject:model.fileId forKey:imagePath];
             }
@@ -245,7 +246,7 @@
             pushVC.titleString   = self.model.title;
             pushVC.contentString = self.model.content;
             pushVC.state         = self.model.state;
-            for (NoticeFileImgsModel *model in self.model.imgs) {
+            for (NoticeFileImgModel *model in self.model.imgs) {
                 NSString *imagePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
                 [imageDic setObject:model.fileId forKey:imagePath];
             }
@@ -290,13 +291,6 @@
                 [actionSheet addAction:action7];
             }
         }
-//        [actionSheet addAction:action3];
-//        [actionSheet addAction:action4];
-//        if (self.model.cancel) {
-//            [actionSheet addAction:action5];
-//        }
-//        [actionSheet addAction:action6];
-//        [actionSheet addAction:action7];
     }
 
     //相当于之前的[actionSheet show];

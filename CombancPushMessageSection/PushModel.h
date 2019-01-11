@@ -28,7 +28,7 @@
 @end
 
 //新闻列表数据模型
-@interface NewslistModel : NSObject
+@interface NewsListModel : NSObject
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *userId;
 @property (nonatomic, copy) NSString *userName;
@@ -45,7 +45,7 @@
 @end
 
 //通知公告数据模型
-@interface NoticelistModel : NSObject
+@interface NoticeListModel : NSObject
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *userId;
 @property (nonatomic, copy) NSString *userName;
@@ -66,7 +66,7 @@
 @property (nonatomic, assign) BOOL cancel;        //通知是否取消
 @end
 
-@interface NoticeFileImgsModel : NSObject
+@interface NoticeFileImgModel : NSObject
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *tabledId;
 @property (nonatomic, copy) NSString *tableName;

@@ -7,10 +7,10 @@
 //  新闻，通知，消息详情信息
 
 #import <UIKit/UIKit.h>
-@class NoticelistModel;
+@class NoticeListModel;
 
 @interface DetailViewController : UIViewController
 
-@property (nonatomic, strong) NoticelistModel *model;
+@property (nonatomic, strong) NoticeListModel *model;
 
 @end
