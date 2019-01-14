@@ -93,13 +93,13 @@
     "  window.location.href = 'combanc:src=' +this.src;"
     "};";
     for (NoticeFileImgModel *model in self.model.imgs) {
-        NSString *imagePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
+        NSString *imagePath = [NSString stringWithFormat:@"%@%@", PushImageURL, model.path];
         NSString *imageStr = [NSString stringWithFormat:@"<img src=\"%@\" onload=\"%@\" style= height=\"250px\"; width=\"100%%\"", imagePath,onload];
         [body appendFormat:@"<div class=\"imageList\"><br>%@</div>",imageStr];
     }
     //添加附件
     for (NoticeFileImgModel *model in self.model.files) {
-        NSString *filePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
+        NSString *filePath = [NSString stringWithFormat:@"%@%@", PushImageURL, model.path];
         [body appendFormat:@"<a href= %@> %@ </a> <br />",filePath,model.name];
     }
     return body;
@@ -222,7 +222,7 @@
             pushVC.typeID      = self.model.type;
             pushVC.content     = self.model.content;
             for (NoticeFileImgModel *model in self.model.imgs) {
-                NSString *imagePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
+                NSString *imagePath = [NSString stringWithFormat:@"%@%@", PushImageURL, model.path];
                 [imageDic setObject:model.fileId forKey:imagePath];
             }
             pushVC.configImageDic = imageDic;
@@ -234,7 +234,7 @@
             pushVC.titleString   = self.model.title;
             pushVC.contentString = self.model.content;
             for (NoticeFileImgModel *model in self.model.imgs) {
-                NSString *imagePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
+                NSString *imagePath = [NSString stringWithFormat:@"%@%@", PushImageURL, model.path];
                 [imageDic setObject:model.fileId forKey:imagePath];
             }
             pushVC.configImageDic = imageDic;
@@ -247,7 +247,7 @@
             pushVC.contentString = self.model.content;
             pushVC.state         = self.model.state;
             for (NoticeFileImgModel *model in self.model.imgs) {
-                NSString *imagePath = [NSString stringWithFormat:@"%@%@", NewsImageURL, model.path];
+                NSString *imagePath = [NSString stringWithFormat:@"%@%@", PushImageURL, model.path];
                 [imageDic setObject:model.fileId forKey:imagePath];
             }
             self.manager.selectUserDictionary = [[NSMutableDictionary alloc]init];

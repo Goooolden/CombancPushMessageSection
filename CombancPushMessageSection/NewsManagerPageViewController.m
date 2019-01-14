@@ -42,6 +42,14 @@
     return _imageArray;
 }
 
+- (void)setToken:(NSString *)token {
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:PushToken];
+}
+
+- (void)setBaseUrl:(NSString *)baseUrl {
+    [[NSUserDefaults standardUserDefaults] setObject:baseUrl forKey:PushBaseUrl];
+}
+
 - (NSMutableArray *)contentArray {
     if (!_contentArray) {
         _contentArray = [NSMutableArray arrayWithCapacity:10];
@@ -105,6 +113,7 @@
     addButton.frame = CGRectMake(K_SCREEN_WIDTH - 67, K_SCREEN_HEIGHT - 67 - self.bottomHeight, 50, 50);
     addButton.layer.cornerRadius = 25;
     [addButton setBackgroundImage:[UIImage imageWithContentsOfFile:ImageResources(@"icon_发布按钮.png")] forState:UIControlStateNormal];
+    
     [addButton addTarget:self action:@selector(addBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addButton];
     

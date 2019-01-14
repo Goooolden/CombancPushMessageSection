@@ -8,10 +8,9 @@
 
 #import "WMPageController.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface NewsManagerPageViewController : WMPageController
 
-@end
+@property (nonatomic, copy) NSString *baseUrl;
+@property (nonatomic, copy) NSString *token;
 
-NS_ASSUME_NONNULL_END
+@end

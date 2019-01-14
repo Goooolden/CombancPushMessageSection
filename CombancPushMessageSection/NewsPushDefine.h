@@ -54,18 +54,16 @@ NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEnc
 #define KIsiPhoneX ((rmStatusBarH == 44.0) ? YES : NO)
 
 #define ImageResources(name) \
-[[[NSBundle mainBundle] pathForResource:@"Resources" ofType:@"bundle"] stringByAppendingPathComponent:name]
+[[[NSBundle mainBundle] pathForResource:@"PushMessageResources" ofType:@"bundle"] stringByAppendingPathComponent:name]
 
-//#define BASE_URL ([NSString stringWithFormat:@"%@/oa",[[NSUserDefaults standardUserDefaults] objectForKey:NoticeBaseUrl]])
+
 #define PushToken (@"token")
 #define PushBaseUrl (@"PushBaseUrl")
-#define NewsImageURL ([NSString stringWithFormat:@"http://10.5.1.172:8087/file/upload"])
-#define MyToken (@"Combanc eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTU0NzIxMzEzNX0.veQ0WhdlrkTp5OLw-C73aY9ilJp6QWFxs6zm3pRAY1OOCXZPoPpDNnxK1tJWSXslFoQhsXmLJWE_Qul-QC-6ZA") //[[NSUserDefaults standardUserDefaults] objectForKey:PushToken]
-#define BASE_URL (@"http://10.5.1.172:8087/oa-sk")
+#define PushImageURL ([NSString stringWithFormat:@"%@/file/upload",[[NSUserDefaults standardUserDefaults] objectForKey:PushBaseUrl]])
+#define MyToken [[NSUserDefaults standardUserDefaults] objectForKey:PushToken]
+#define BASE_URL ([NSString stringWithFormat:@"%@/oa",[[NSUserDefaults standardUserDefaults] objectForKey:PushBaseUrl]])
+#define Basis_URL ([NSString stringWithFormat:@"%@/basis",[[NSUserDefaults standardUserDefaults] objectForKey:PushBaseUrl]])
 
-//上传图片
-#define UploadBASE_URL (@"http://10.5.1.172:8087/zuul")
-#define UploadFile_URL ([NSString stringWithFormat:@"%@/file/uploadFile",UploadBASE_URL])
 /**
  上传文件参数
  @param module 新闻sys_news_file,通知sys_notice_file,消息sys_news_file
@@ -260,10 +258,10 @@ NS_INLINE NSDictionary *cancelMessageParameter(NSString *id) {
 }
 
 //查询第一层部门列表
-#define Departlist_URL [NSString stringWithFormat:@"%@/pub/listDepartLayer1",@"http://10.5.1.172:8087/basis"]
+#define Departlist_URL [NSString stringWithFormat:@"%@/pub/listDepartLayer1",Basis_URL]
 
 //查询某部门下的子部门及部门成员
-#define DepartUserlist_URL [NSString stringWithFormat:@"%@/pub/listDepartUsers1",@"http://10.5.1.172:8087/basis"]
+#define DepartUserlist_URL [NSString stringWithFormat:@"%@/pub/listDepartUsers1",Basis_URL]
 NS_INLINE NSDictionary *departUserlistParameter(NSString *parentId,NSString *name) {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     NSMutableDictionary *paramDic = [NSMutableDictionary dictionary];

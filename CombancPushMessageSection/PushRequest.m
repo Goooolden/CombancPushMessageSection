@@ -51,7 +51,7 @@
 #pragma mark - 上传图片
 + (void)requestUploadFile:(NSDictionary *)param imageDicArray:(NSArray *)imageDicArray imageKeyName:(NSString *)keyName success:(RequestSucess)success failed:(RequestFailed)failed {
     
-    [HTTPTool upLoadMutiWithURL:UploadFile_URL headers:header(MyToken) param:param imageDicArray:imageDicArray keyName:keyName success:^(id json) {
+    [HTTPTool upLoadMutiWithURL:PushImageURL headers:header(MyToken) param:param imageDicArray:imageDicArray keyName:keyName success:^(id json) {
         if ([[PushRequest new] isRequestSuccess:json]) {
             success(json[@"data"]);
         }
