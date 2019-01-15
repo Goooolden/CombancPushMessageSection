@@ -227,6 +227,7 @@
             }
             pushVC.configImageDic = imageDic;
             pushVC.vcmodelArray = [self getData:@"PushNew"];
+            pushVC.title = @"编辑新闻";
             [self.navigationController pushViewController:pushVC animated:YES];
         }else if (self.manager.pushType == PushNoticeType) {
             PushNoticeViewController *pushVC = [[PushNoticeViewController alloc]init];
@@ -239,6 +240,7 @@
             }
             pushVC.configImageDic = imageDic;
             pushVC.vcmodelArray = [self getData:@"PushNotice"];
+            pushVC.title = @"编辑通知";
             [self.navigationController pushViewController:pushVC animated:YES];
         }else if (self.manager.pushType == PushMessageType) {
             PushMessageViewController *pushVC = [[PushMessageViewController alloc]init];
@@ -256,6 +258,7 @@
             }
             pushVC.configImageDic = imageDic;
             pushVC.vcmodelArray = [self getData:@"EditMessage"];
+            pushVC.title = @"编辑消息";
             [self.navigationController pushViewController:pushVC animated:YES];
         }
     }];

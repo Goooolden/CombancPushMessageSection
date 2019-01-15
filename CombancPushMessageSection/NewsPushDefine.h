@@ -54,7 +54,7 @@ NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEnc
 #define KIsiPhoneX ((rmStatusBarH == 44.0) ? YES : NO)
 
 #define ImageResources(name) \
-[[[NSBundle mainBundle] pathForResource:@"PushMessageResources" ofType:@"bundle"] stringByAppendingPathComponent:name]
+[[[NSBundle mainBundle] pathForResource:@"PushMessageResource" ofType:@"bundle"] stringByAppendingPathComponent:name]
 
 
 #define PushToken (@"token")

@@ -55,7 +55,7 @@
         _contentArray = [NSMutableArray arrayWithCapacity:10];
         for (int i = 0; i < self.imageArray.count; i++) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-            btn.frame = CGRectMake(K_SCREEN_WIDTH - 67, K_SCREEN_HEIGHT - 67 - self.bottomHeight, 50, 50);
+            btn.frame = CGRectMake(K_SCREEN_WIDTH - 67, K_SCREEN_HEIGHT - 80 - 44 - self.bottomHeight, 50, 50);
             [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [btn setBackgroundImage:self.imageArray[i] forState:UIControlStateNormal];
             btn.layer.cornerRadius = 25;
@@ -75,7 +75,7 @@
         NSArray *nameArray = @[@"通知",@"公告",@"新闻"];
         for (int i = 0; i < self.imageArray.count; i++) {
             UILabel *lable = [[UILabel alloc]init];
-            lable.frame = CGRectMake(K_SCREEN_WIDTH - 67 - 25, K_SCREEN_HEIGHT - 67 - 10 - self.bottomHeight, 50, 70);
+            lable.frame = CGRectMake(K_SCREEN_WIDTH - 67 - 25, K_SCREEN_HEIGHT - 80 - 44 - 10 - self.bottomHeight, 50, 70);
             lable.text = nameArray[i];
             lable.font = [UIFont fontWithName:@"PingFangSC-Regular" size:11];
             lable.alpha = 0;
@@ -110,15 +110,15 @@
 
 - (void)configAddButton {
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    addButton.frame = CGRectMake(K_SCREEN_WIDTH - 67, K_SCREEN_HEIGHT - 67 - self.bottomHeight, 50, 50);
+    addButton.frame = CGRectMake(K_SCREEN_WIDTH - 67, K_SCREEN_HEIGHT - 80 - 44 , 50, 50);
     addButton.layer.cornerRadius = 25;
-    [addButton setBackgroundImage:[UIImage imageWithContentsOfFile:ImageResources(@"icon_发布按钮.png")] forState:UIControlStateNormal];
+    [addButton setBackgroundImage:[UIImage imageNamed:@"PushMessageResource.bundle/icon_发布按钮.png"] forState:UIControlStateNormal];
     
     [addButton addTarget:self action:@selector(addBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addButton];
     
     self.cancelLabel = [[UILabel alloc]init];
-    self.cancelLabel.frame = CGRectMake(K_SCREEN_WIDTH - 67 - 25, K_SCREEN_HEIGHT - 67 - 10 - self.bottomHeight, 50, 70);
+    self.cancelLabel.frame = CGRectMake(K_SCREEN_WIDTH - 67 - 25, K_SCREEN_HEIGHT - 80 - 44 - 10 - self.bottomHeight, 50, 70);
     self.cancelLabel.text = @"取消";
     self.cancelLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:11];
     self.cancelLabel.hidden = YES;
@@ -250,15 +250,18 @@
         //发布通知
         PushMessageViewController *messageVC = [[PushMessageViewController alloc]init];
         messageVC.vcmodelArray = [self getData:@"PushMessage"];
+        messageVC.title = @"发布通知";
         [self.navigationController pushViewController:messageVC animated:YES];
     }else if (sender.tag == 1) {
         //发布公告
         PushNoticeViewController *noticeVC = [[PushNoticeViewController alloc]init];
         noticeVC.vcmodelArray = [self getData:@"PushNotice"];
+        noticeVC.title = @"发布公告";
         [self.navigationController pushViewController:noticeVC animated:YES];
     }else if (sender.tag == 2) {
         //发布新闻
         PushNewViewController *newsVC = [[PushNewViewController alloc]init];
+        newsVC.title = @"发布新闻";
         newsVC.vcmodelArray = [self getData:@"PushNew"];
         [self.navigationController pushViewController:newsVC animated:YES];
     }

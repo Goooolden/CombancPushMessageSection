@@ -82,10 +82,10 @@ static NSString *const USER_CELLID   = @"user_cellID";
             make.top.equalTo(self.view.mas_safeAreaLayoutGuideTop);
             make.left.equalTo(self.view.mas_safeAreaLayoutGuideLeft);
             make.right.equalTo(self.view.mas_safeAreaLayoutGuideRight);
-            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(44);
+            make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-44);
         }else {
             make.left.right.top.equalTo(self.view);
-            make.bottom.equalTo(self.view.mas_bottom).offset(44);
+            make.bottom.equalTo(self.view.mas_bottom).offset(-44);
         }
     }];
     
@@ -146,9 +146,9 @@ static NSString *const USER_CELLID   = @"user_cellID";
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:USER_CELLID];
         }
         cell.textLabel.text = model.name;
-        cell.imageView.image = [UIImage imageNamed:@"Resources.bundle/approval_assign_rb_false.png"];
+        cell.imageView.image = [UIImage imageNamed:@"PushMessageResource.bundle/approval_assign_rb_false.png"];
         if ([self.manager.selectUserDictionary.allKeys containsObject:model.userId]) {
-            cell.imageView.image = [UIImage imageNamed:@"Resources.bundle/approval_assign_rb_true.png"];
+            cell.imageView.image = [UIImage imageNamed:@"PushMessageResource.bundle/approval_assign_rb_true.png"];
         }
         return cell;
     }

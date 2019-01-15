@@ -50,7 +50,7 @@
     [self.firstStateBtn setTitle:@"提交存为草稿" forState:UIControlStateNormal];
     [self.firstStateBtn setTitleColor:RGBA(136, 136, 136, 1) forState:UIControlStateNormal];
     self.firstStateBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:13];
-    [self.firstStateBtn setImage:[UIImage imageNamed:@"Resources.bundle/approval_assign_rb_true.png"] forState:UIControlStateNormal];
+    [self.firstStateBtn setImage:[UIImage imageNamed:@"PushMessageResource.bundle/approval_assign_rb_true.png"] forState:UIControlStateNormal];
     self.firstStateBtn.selected = YES;
     [self.firstStateBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0, 3)];
     [self.firstStateBtn addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -60,7 +60,7 @@
     [self.secondStateBtn setTitle:@"提交后发送" forState:UIControlStateNormal];
     [self.secondStateBtn setTitleColor:RGBA(136, 136, 136, 1) forState:UIControlStateNormal];
     self.secondStateBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:13];
-    [self.secondStateBtn setImage:[UIImage imageNamed:@"Resources.bundle/approval_assign_rb_false.png"] forState:UIControlStateNormal];
+    [self.secondStateBtn setImage:[UIImage imageNamed:@"PushMessageResource.bundle/approval_assign_rb_false.png"] forState:UIControlStateNormal];
     [self.secondStateBtn setImageEdgeInsets:UIEdgeInsetsMake(0, -3, 0, 3)];
     [self.secondStateBtn addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:self.secondStateBtn];
@@ -76,15 +76,15 @@
 }
 
 - (void)setIsRequired:(BOOL)isRequired {
-    _leftImageView.image = isRequired == YES ? [UIImage imageNamed:@"Resources.bundle/stars.png"] : nil;
+    _leftImageView.image = isRequired == YES ? [UIImage imageNamed:@"PushMessageResource.bundle/stars.png"] : nil;
 }
 
 - (void)buttonClicked:(UIButton *)sender {
     if (sender == self.firstStateBtn) {
         self.firstStateBtn.selected = !self.firstStateBtn.selected;
         if (self.firstStateBtn.selected) {
-            [self.firstStateBtn setImage:[UIImage imageNamed:@"Resources.bundle/approval_assign_rb_true.png"] forState:UIControlStateNormal];
-            [self.secondStateBtn setImage:[UIImage imageNamed:@"Resources.bundle/approval_assign_rb_false.png"] forState:UIControlStateNormal];
+            [self.firstStateBtn setImage:[UIImage imageNamed:@"PushMessageResource.bundle/approval_assign_rb_true.png"] forState:UIControlStateNormal];
+            [self.secondStateBtn setImage:[UIImage imageNamed:@"PushMessageResource.bundle/approval_assign_rb_false.png"] forState:UIControlStateNormal];
             self.secondStateBtn.selected = NO;
             if (self.stateSelectedBlock) {
                 self.stateSelectedBlock(@"0");
@@ -93,8 +93,8 @@
     }else if (sender == self.secondStateBtn) {
         self.secondStateBtn.selected = !self.secondStateBtn.selected;
         if (self.secondStateBtn.selected) {
-            [self.secondStateBtn setImage:[UIImage imageNamed:@"Resources.bundle/approval_assign_rb_true.png"] forState:UIControlStateNormal];
-            [self.firstStateBtn setImage:[UIImage imageNamed:@"Resources.bundle/approval_assign_rb_false.png"] forState:UIControlStateNormal];
+            [self.secondStateBtn setImage:[UIImage imageNamed:@"PushMessageResource.bundle/approval_assign_rb_true.png"] forState:UIControlStateNormal];
+            [self.firstStateBtn setImage:[UIImage imageNamed:@"PushMessageResource.bundle/approval_assign_rb_false.png"] forState:UIControlStateNormal];
             self.firstStateBtn.selected = NO;
             if (self.stateSelectedBlock) {
                 self.stateSelectedBlock(@"1");
