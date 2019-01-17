@@ -182,12 +182,6 @@
             } failed:^(NSError *error) {
                 [CombancHUD showErrorMessage:@"操作失败"];
             }];
-        }else if (self.manager.pushType == PushMessageType) {
-            [PushRequest requestMessagePush:publishMessageParameter(self.model.id) success:^(id json) {
-                [CombancHUD showSuccessMessage:@"操作成功"];
-            } failed:^(NSError *error) {
-                [CombancHUD showErrorMessage:@"操作失败"];
-            }];
         }
     }];
     UIAlertAction *action5 = [UIAlertAction actionWithTitle:@"取消发布" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -203,15 +197,9 @@
             } failed:^(NSError *error) {
                 [CombancHUD showErrorMessage:@"操作失败"];
             }];
-        }else if (self.manager.pushType == PushMessageType) {
-            [PushRequest requestMessageCancel:cancelMessageParameter(self.model.id) success:^(id json) {
-                [CombancHUD showSuccessMessage:@"操作成功"];
-            } failed:^(NSError *error) {
-                [CombancHUD showErrorMessage:@"操作失败"];
-            }];
         }
     }];
-    UIAlertAction *action6 = [UIAlertAction actionWithTitle:@"编辑" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *action6 = [UIAlertAction actionWithTitle:@"修改" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         self.manager.isEdite = YES;
         NSMutableDictionary *imageDic = [[NSMutableDictionary alloc]init];
         if (self.manager.pushType == PushNewType) {
@@ -266,6 +254,25 @@
         NSLog(@"点击了取消");
     }];
     
+    UIAlertAction *action8 = [UIAlertAction actionWithTitle:@"发送" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (self.manager.pushType == PushMessageType) {
+            [PushRequest requestMessagePush:publishMessageParameter(self.model.id) success:^(id json) {
+                [CombancHUD showSuccessMessage:@"操作成功"];
+            } failed:^(NSError *error) {
+                [CombancHUD showErrorMessage:@"操作失败"];
+            }];
+        }
+    }];
+    UIAlertAction *action9 = [UIAlertAction actionWithTitle:@"撤销" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if (self.manager.pushType == PushMessageType) {
+            [PushRequest requestMessageCancel:cancelMessageParameter(self.model.id) success:^(id json) {
+                [CombancHUD showSuccessMessage:@"操作成功"];
+            } failed:^(NSError *error) {
+                [CombancHUD showErrorMessage:@"操作失败"];
+            }];
+        }
+    }];
+    
     //把action添加到actionSheet里
     if (self.manager.pushType == PushNewType || self.manager.pushType == PushNoticeType) {
         [actionSheet addAction:action1];
@@ -277,22 +284,22 @@
         [actionSheet addAction:action7];
     }else if (self.manager.pushType == PushMessageType) {
         if ([self.model.state isEqualToString:@"1"]) {
-            //删除
-            [actionSheet addAction:action3];
-            [actionSheet addAction:action7];
-        }else {
             if (self.model.cancel) {
-                //删除 取消发送
+                //删除 取消发布
                 [actionSheet addAction:action3];
-                [actionSheet addAction:action5];
+                [actionSheet addAction:action9];
                 [actionSheet addAction:action7];
             }else {
-                //删除 发送 修改
+                //删除
                 [actionSheet addAction:action3];
-                [actionSheet addAction:action4];
-                [actionSheet addAction:action6];
                 [actionSheet addAction:action7];
             }
+        }else {
+            //删除 发布 修改
+            [actionSheet addAction:action3];
+            [actionSheet addAction:action8];
+            [actionSheet addAction:action6];
+            [actionSheet addAction:action7];
         }
     }
 

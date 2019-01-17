@@ -131,7 +131,7 @@ ImageSelectViewDelegate>
             cell = [[TextfieldTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TEXTFIELD_CELLID];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.isRequired = YES;
+//        cell.isRequired = YES;
         [cell textViewDidChange:^{
             [self.mytableView beginUpdates];
             [self.mytableView endUpdates];

@@ -127,7 +127,7 @@ ImageSelectViewDelegate>
             cell = [[ChoiceTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CHOICE_CELLID];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.isRequired = YES;
+//        cell.isRequired = YES;
         cell.nameLabel.text = model.name;
         cell.infoLabel.text = self.typeName;
         return cell;
@@ -138,7 +138,7 @@ ImageSelectViewDelegate>
             cell = [[TextfieldTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TEXTFIELD_CELLID];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.isRequired = YES;
+//        cell.isRequired = YES;
         [cell textViewDidChange:^{
             [self.myTableView beginUpdates];
             [self.myTableView endUpdates];
@@ -188,6 +188,7 @@ ImageSelectViewDelegate>
             self.imageArray = images;
             [self.myTableView reloadData];
         }];
+//        cell.isRequired = YES;
         cell.nameLabel.text = model.name;
         /*
          首次进入编辑界面加载图片

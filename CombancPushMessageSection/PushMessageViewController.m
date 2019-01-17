@@ -131,7 +131,7 @@ ImageSelectViewDelegate>
             cell = [[ChoiceTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CHOICE_CELLID];
         }
         cell.nameLabel.text = model.name;
-        cell.isRequired = YES;
+//        cell.isRequired = YES;
         cell.infoLabel.text = [[PushManager sharePushManagerInstance].selectUserDictionary.allValues componentsJoinedByString:@","];
         return cell;
     }else if ([model.type isEqualToString:@"3"]) {
@@ -141,7 +141,7 @@ ImageSelectViewDelegate>
             cell = [[TextfieldTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TEXTFIELD_CELLID];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.isRequired = YES;
+//        cell.isRequired = YES;
         [cell textViewDidChange:^{
             [self.mytableView beginUpdates];
             [self.mytableView endUpdates];
@@ -205,7 +205,7 @@ ImageSelectViewDelegate>
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.nameLabel.text = @"状态";
-        cell.isRequired = YES;
+//        cell.isRequired = YES;
         __weak typeof(self) weakSelf = self;
         [cell setStateSelectedBlock:^(NSString *state) {
             weakSelf.state = state;

@@ -137,12 +137,18 @@ static NSString *const CELLID = @"CELLID";
         cell.stickLabel.hidden = YES;
         cell.pushstateLabel.text = @"已发布";
         cell.pushstateLabel.backgroundColor = RGBA(24, 241, 146, 1);
+        if (self.manager.pushType == PushMessageType) {
+            cell.pushstateLabel.text = @"已发送";
+        }
     }else if ([model.state isEqualToString:@"2"]) {
         //置顶状态
         cell.stickLabel.hidden = NO;
         cell.stickLabel.text = model.stateStr;
         cell.pushstateLabel.text = @"已发布";
         cell.pushstateLabel.backgroundColor = RGBA(24, 241, 146, 1);
+        if (self.manager.pushType == PushMessageType) {
+            cell.pushstateLabel.text = @"已发送";
+        }
     }
 }
 
