@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "CombancPushMessageSection"
-  s.version      = "0.0.5"
+  s.version      = "0.0.7"
   s.summary      = "发布新闻，通知，消息模块"
 
   # This description is used to generate tags and improve search results.
@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/Goooolden/CombancPushMessageSection.git", :tag => "0.0.5" }
+  s.source       = { :git => "https://github.com/Goooolden/CombancPushMessageSection.git", :tag => "0.0.7" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -144,7 +144,7 @@ Pod::Spec.new do |s|
   s.dependency 'IQKeyboardManager'
   s.dependency 'CombancExtension', '~> 0.0.1.1'
   s.dependency 'CombancHttpTool', '~> 0.0.1.3'
-  s.dependency 'CombancOACellType','0.0.8'
+  s.dependency 'CombancOACellType','~> 0.0.8'
   s.dependency 'CombancHUD', '~> 0.0.2'
-  s.dependency 'CombancPickerView', '0.0.2'
+  s.dependency 'CombancPickerView', '~> 0.0.2'
 end
