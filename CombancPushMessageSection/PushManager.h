@@ -30,6 +30,11 @@ typedef enum PushType {
 @property (nonatomic, strong) NSMutableDictionary *selectDepartDictionary;
 
 /**
+ 发布消息选择部门信息
+ */
+@property (nonatomic, strong) NSMutableArray *departMentArray;
+
+/**
  记录进入了哪个模块
  */
 @property (nonatomic, assign) PushType pushType;

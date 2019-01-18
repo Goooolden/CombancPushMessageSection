@@ -19,6 +19,7 @@ static PushManager *manager;
         manager = [[PushManager alloc]init];
         manager.selectUserDictionary = [[NSMutableDictionary alloc]init];
         manager.selectDepartDictionary = [[NSMutableDictionary alloc]init];
+        manager.departMentArray = [[NSMutableArray alloc]initWithObjects:@"部门", nil];
     });
     return manager;
 }

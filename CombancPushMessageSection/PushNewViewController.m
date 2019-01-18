@@ -82,7 +82,7 @@ ImageSelectViewDelegate>
             make.bottom.equalTo(self.view.mas_safeAreaLayoutGuideBottom).offset(-44);
         }else {
             make.left.right.top.equalTo(self.view);
-            make.bottom.equalTo(self.view.mas_bottom).offset(44);
+            make.bottom.equalTo(self.view.mas_bottom).offset(-44);
         }
     }];
     
